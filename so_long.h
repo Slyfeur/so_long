@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 11:04:40 by tuytters          #+#    #+#             */
-/*   Updated: 2021/09/29 12:55:35 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/09/29 15:13:54 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,7 @@ void	parse(char *filename, t_so_long *global);
 void	ft_error(char *msg_error);
 void	open_img(t_so_long *global);
 void	check_error_map(t_so_long *global);
+void	check_error_parsing(char *filename, t_so_long *global);
+void	check_error_wall(t_so_long *global);
 
 #endif

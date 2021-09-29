@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 15:23:07 by tuytters          #+#    #+#             */
-/*   Updated: 2021/09/29 13:00:12 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/09/29 15:17:00 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	crea_tab(char *filename, t_so_long *global)
 	if (fd == -1)
 		ft_error("Open failed");
 	i = 0;
-	//printf("h_map=%d\n", global->h_map);
 	while (i < global->h_map)
 	{
 		j = 0;
@@ -92,17 +91,9 @@ void	crea_tab(char *filename, t_so_long *global)
 				global->count->e++;
 			if (line[j] == 'C')
 				global->count->c++;
-			//printf("collectible = %d\n", global->count->c);
 			j++;
 		}
 		global->map->tab[i][j] = '\0';
-		// j = 0;
-		// while (global->map->tab[i][j])
-		// {
-		// 	printf("%c", global->map->tab[i][j]);
-		// 	j++;
-		// }
-		// printf("\n");
 		free(line);
 		i++;
 	}
@@ -135,6 +126,8 @@ void	parse(char *filename, t_so_long *global)
 {
 	global->height = 32 * get_height(filename, global);
 	global->width = 32 * get_width(filename, global);
+	check_error_parsing(filename, global);
 	ft_init_tab(global);
 	crea_tab(filename, global);
+	check_error_wall(global);
 }

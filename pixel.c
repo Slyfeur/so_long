@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:34:24 by tuytters          #+#    #+#             */
-/*   Updated: 2021/09/29 12:04:05 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/09/29 13:47:44 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ void	my_mlx_pixel_put(t_so_long *global, int x, int y, int color)
 
 void	ft_crea_pix(t_so_long *global)
 {
-	// int	y;
-	// int	x;
-
 	if (global->pl->pos_x >= 0 && global->pl->pos_y >= 0
 		&& global->pl->pos_x <= global->width - 32
 		&& global->pl->pos_y <= global->height - 32)

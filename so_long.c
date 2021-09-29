@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 12:21:33 by tuytters          #+#    #+#             */
-/*   Updated: 2021/09/29 13:12:48 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/09/29 14:34:35 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,15 +101,6 @@ int	main(int argc, char **argv)
 		ft_crea_pix(global);
 		open_img(global);
 		pr_img_to_wind(global);
-		// while (global->map->tab[global->h_map][global->w_map])
-		// {
-		// 	if()
-		//mlx_put_image_to_window(global->mlx_ptr, global->win_ptr, global->pl->img, global->pl->pos_x, global->pl->pos_y);
-		// 	mlx_put_image_to_window(global->mlx_ptr, global->win_ptr, global->bg, 0 -> XMAX, 0 -> YMAX);
-		// 	j++;
-		// }
-		// printf("\n");
-		
 		//mlx_loop_hook(global->mlx, , void(*)&global);
 		mlx_loop(global->mlx_ptr);
 		if (global->pixel)
