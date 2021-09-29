@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 12:21:33 by tuytters          #+#    #+#             */
-/*   Updated: 2021/09/29 11:17:39 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/09/29 13:12:48 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ static t_so_long	*ft_init(t_so_long *global)
 	global->win_ptr = mlx_new_window(global->mlx_ptr,
 			global->width, global->height, "So_long");
 	global->image = mlx_new_image(global->mlx_ptr,
-			global->width, global->height);
+			global->height, global->width);
+	global->pl->img = mlx_new_image(global->mlx_ptr,
+			32, 32);
 	return (global);
 }
 
@@ -26,21 +28,57 @@ static t_so_long	*ft_malloc_all(t_so_long *global)
 {
 	t_pixel		*pixel;
 	t_map		*map;
-	t_pl	*pl;
+	t_pl		*pl;
+	t_count		*count;
 
 	pixel = malloc(sizeof(t_pixel));
 	if (!pixel)
-		ft_error("Error\nMalloc failed\n");
+		ft_error("Malloc failed");
 	map = malloc(sizeof(t_map));
 	if (!map)
-		ft_error("Error\nMalloc failed\n");
+		ft_error("Malloc failed");
 	pl = malloc(sizeof(t_pl));
 	if (!pl)
-		ft_error("Error\nMalloc failed\n");
+		ft_error("Malloc failed");
+	count = malloc(sizeof(t_pl));
+	if (!pl)
+		ft_error("Malloc failed");
 	global->pl = pl;
 	global->map = map;
 	global->pixel = pixel;
+	global->count = count;
+	global->count->p = 0;
+	global->count->e = 0;
+	global->count->c = 0;
+	global->count->move = 0;
 	return (global);
+}
+
+void	pr_img_to_wind(t_so_long *global)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < global->h_map)
+	{
+		j = 0;
+		while (j < global->w_map)
+		{
+			if (global->map->tab[i][j] == 'P')
+				mlx_put_image_to_window(global->mlx_ptr, global->win_ptr, global->pl->img, global->pl->pos_x, global->pl->pos_y);
+			else if (global->map->tab[i][j] == '0')
+				mlx_put_image_to_window(global->mlx_ptr, global->win_ptr, global->map->sol, j * 32, i * 32);
+			else if (global->map->tab[i][j] == '1')
+				mlx_put_image_to_window(global->mlx_ptr, global->win_ptr, global->map->wall, j * 32, i * 32);
+			else if (global->map->tab[i][j] == 'C')
+				mlx_put_image_to_window(global->mlx_ptr, global->win_ptr, global->map->col, j * 32, i * 32);
+			else if (global->map->tab[i][j] == 'E')
+				mlx_put_image_to_window(global->mlx_ptr, global->win_ptr, global->map->exit, j * 32, i * 32);
+			j++;
+		}
+		i++;
+	}
 }
 
 int	main(int argc, char **argv)
@@ -51,9 +89,10 @@ int	main(int argc, char **argv)
 	{
 		global = malloc(sizeof(t_so_long));
 		if (!global)
-			ft_error("Error\nMalloc failed\n");
+			ft_error("Malloc failed");
 		ft_malloc_all(global);
 		parse(argv[1], global);
+		check_error_map(global);
 		global = ft_init(global);
 		mlx_hook(global->win_ptr, 2, 1L << 0, &ft_keypress, global);
 		mlx_hook(global->win_ptr, 17, 1L << 17, &ft_mousepress, global);
@@ -61,15 +100,27 @@ int	main(int argc, char **argv)
 				&global->l_l, &global->endian);
 		ft_crea_pix(global);
 		open_img(global);
-		// global->image = mlx_xpm_file_to_image(global->mlx_ptr, "xpm/sora_bas.XPM", &x, &y);
-		mlx_put_image_to_window(global->mlx_ptr, global->win_ptr, global->image, global->pl->pos_x, global->pl->pos_y);
+		pr_img_to_wind(global);
+		// while (global->map->tab[global->h_map][global->w_map])
+		// {
+		// 	if()
+		//mlx_put_image_to_window(global->mlx_ptr, global->win_ptr, global->pl->img, global->pl->pos_x, global->pl->pos_y);
+		// 	mlx_put_image_to_window(global->mlx_ptr, global->win_ptr, global->bg, 0 -> XMAX, 0 -> YMAX);
+		// 	j++;
+		// }
+		// printf("\n");
+		
 		//mlx_loop_hook(global->mlx, , void(*)&global);
 		mlx_loop(global->mlx_ptr);
-		if (global)
-			free(global);
 		if (global->pixel)
 			free(global->pixel);
 		if (global->map)
 			free(global->map);
+		if (global->pl)
+			free(global->pl);
+		if (global->count)
+			free(global->count);
+		if (global)
+			free(global);
 	}
 }

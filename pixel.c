@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:34:24 by tuytters          #+#    #+#             */
-/*   Updated: 2021/09/29 10:39:30 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/09/29 12:04:05 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_crea_pix(t_so_long *global)
 	if (global->pl->pos_x >= 0 && global->pl->pos_y >= 0
 		&& global->pl->pos_x <= global->width - 32
 		&& global->pl->pos_y <= global->height - 32)
-		mlx_put_image_to_window(global->mlx_ptr, global->win_ptr, global->image, global->pl->pos_x, global->pl->pos_y);
+		mlx_put_image_to_window(global->mlx_ptr, global->win_ptr, global->pl->img, global->pl->pos_x, global->pl->pos_y);
 }
 
 void	ft_crea(t_so_long *global)

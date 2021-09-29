@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 11:04:40 by tuytters          #+#    #+#             */
-/*   Updated: 2021/09/29 11:16:48 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/09/29 12:55:35 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,29 @@ typedef struct s_pixel
 	int	m;
 }				t_pixel;
 
+typedef struct s_count
+{
+	int	p;
+	int	c;
+	int	e;
+	int	move;
+}				t_count;
+
 typedef struct s_pl
 {
-	int	pos_x;
-	int	pos_y;
+	int		pos_x;
+	int		pos_y;
+	void	*img;
 }				t_pl;
 
 
 typedef struct s_map
 {
 	char	**tab;
+	void	*wall;
+	void	*exit;
+	void	*sol;
+	void	*col;
 }				t_map;
 
 typedef struct s_so_long
@@ -53,7 +66,8 @@ typedef struct s_so_long
 	// int			y;
 	t_pixel		*pixel;
 	t_map		*map;
-	t_pl	*pl;
+	t_pl		*pl;
+	t_count		*count;
 }				t_so_long;
 
 void	ft_crea_pix(t_so_long *global);
@@ -63,5 +77,6 @@ int		ft_mousepress(void *param);
 void	parse(char *filename, t_so_long *global);
 void	ft_error(char *msg_error);
 void	open_img(t_so_long *global);
+void	check_error_map(t_so_long *global);
 
 #endif
