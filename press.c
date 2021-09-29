@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:49:50 by tuytters          #+#    #+#             */
-/*   Updated: 2021/09/28 14:08:15 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/09/29 10:38:39 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,32 +17,37 @@ int	ft_keypress(int keycode, void *param)
 	t_so_long	*global;
 
 	global = (t_so_long *)param;
+	//printf("x : %i y : %i tab i = %s tab j = %s\n", global->pl->pos_x, global->pl->pos_y, global->map->tab[global->pl->pos_y / 32], global->map->tab[global->pl->pos_x / 32]);
 	if (keycode == 53)
 		exit(0);
-	else if (keycode == 125 || keycode == 1)
+	else if ((keycode == 125 || keycode == 1) && (global->pl->pos_y < global->height - 32)
+		&& global->map->tab[(global->pl->pos_y / 32) + 1][global->pl->pos_x / 32] != '1')
 	{
-		if (global->pixel->m < global->height - 32)
-			global->pixel->m += 32;
-		ft_crea(global, global->pixel);
+		global->pl->pos_y += 32;
+		ft_crea(global);
 	}
-	else if (keycode == 124 || keycode == 2)
+	else if ((keycode == 124 || keycode == 2) && (global->pl->pos_x < global->width - 32)
+		&& global->map->tab[global->pl->pos_y / 32][(global->pl->pos_x / 32) + 1] != '1')
 	{
-		if (global->pixel->n < global->width - 32)
-			global->pixel->n += 32;
-		ft_crea(global, global->pixel);
+	//	if (global->pl->pos_x < global->width - 32)
+		global->pl->pos_x += 32;
+		ft_crea(global);
 	}
-	else if (keycode == 126 || keycode == 13)
+	else if ((keycode == 126 || keycode == 13) && (global->pl->pos_y > 31)
+		&& global->map->tab[(global->pl->pos_y / 32) - 1][global->pl->pos_x / 32] != '1')
 	{
-		if (global->pixel->m > 32)
-			global->pixel->m -= 32;
-		ft_crea(global, global->pixel);
+		//if (global->pl->pos_y > 32)
+		global->pl->pos_y -= 32;
+		ft_crea(global);
 	}
-	else if (keycode == 123 || keycode == 0)
+	else if ((keycode == 123 || keycode == 0) && (global->pl->pos_x > 31)
+		&& global->map->tab[global->pl->pos_y / 32][(global->pl->pos_x / 32) - 1] != '1')
 	{
-		if (global->pixel->n > 32)
-			global->pixel->n -= 32;
-		ft_crea(global, global->pixel);
+		//if (global->pl->pos_x > 32)
+		global->pl->pos_x -= 32;
+		ft_crea(global);
 	}
+	
 	return (0);
 }
 

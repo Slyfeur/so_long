@@ -6,7 +6,7 @@
 #    By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/21 11:38:38 by tuytters          #+#    #+#              #
-#    Updated: 2021/09/28 13:35:59 by tuytters         ###   ########.fr        #
+#    Updated: 2021/09/29 10:53:24 by tuytters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ INCLUDE 	=	includes
 CFLAGS		=	-Wall -Wextra -Werror -I$(INCLUDE) -fsanitize=address -g
 RM			=	rm -f
 SRCS		=	so_long.c	\
+				crea_img.c	\
 				error.c		\
 				parsing.c	\
 				pixel.c		\
