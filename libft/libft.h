@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 09:40:49 by tuytters          #+#    #+#             */
-/*   Updated: 2021/09/28 14:18:03 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/09/30 09:21:58 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void		ft_putstr(char *s);
 char		**ft_split(char const *s, char c);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strdup(const char *src);
+int			ft_strfilecmp(char *file, char *end);
 char		*ft_strjoin(char const *s1, char const *s2);
 size_t		ft_strlcat(char *dst, const char *src, size_t n);
 size_t		ft_strlcpy(char *dst, const char *src, size_t n);

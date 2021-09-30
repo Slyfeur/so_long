@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 09:33:38 by tuytters          #+#    #+#             */
-/*   Updated: 2021/09/29 15:40:42 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/09/30 08:28:05 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,17 @@ void	check_error_wall(t_so_long *global)
 {
 	int	i;
 	int	j;
-//	int	x;
 
 	i = 0;
-//	x = 0;
 	while (i < global->h_map)
 	{
 		j = 0;
-		printf("test %p\n", global->map->tab);
 		if (global->map->tab[i][j] != '1')
 			ft_error("Bad map, left wall with holes");
-		printf("test1\n");
 		if (i == 0 || i == global->h_map - 1)
 		{
 			while (global->map->tab[i][j] != '\0')
 			{
-				printf("test2\n");
 				if (global->map->tab[i][j] != '1')
 					ft_error("Bad map, top or bottom wall with holes");
 				j++;
@@ -45,8 +40,6 @@ void	check_error_wall(t_so_long *global)
 		}
 		else
 			j = global->w_map;
-		printf("test3\n");
-		printf("j = %d width = %d\n", j, global->w_map);
 		if (global->map->tab[i][j - 1] != '1')
 			ft_error("Bad map, right wall with holes");
 		i++;
@@ -86,7 +79,15 @@ void	check_error_parsing(char *filename, t_so_long *global)
 
 void	check_error_map(t_so_long *global)
 {
-	if (global->count->p != 1)
+	if (global->count->p != 1 && global->count->e != 1 && global->count->c < 1)
+		ft_error("Wrong number of players, exit and collectible");
+	else if (global->count->p != 1 && global->count->e != 1)
+		ft_error("Wrong number of players and exit");
+	else if (global->count->p != 1 && global->count->c < 1)
+		ft_error("Wrong number of players and collectible");
+	else if (global->count->e != 1 && global->count->c < 1)
+		ft_error("Wrong number of exit and collectible");
+	else if (global->count->p != 1)
 		ft_error("Wrong number of players");
 	else if (global->count->e != 1)
 		ft_error("Wrong number of exit");

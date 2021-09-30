@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 11:04:40 by tuytters          #+#    #+#             */
-/*   Updated: 2021/09/29 15:13:54 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/09/30 11:53:19 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,29 @@ typedef struct s_pl
 {
 	int		pos_x;
 	int		pos_y;
-	void	*img;
+	void	*s_b;
+	void	*s_h;
+	void	*s_d;
+	void	*s_g;
 }				t_pl;
 
 
 typedef struct s_map
 {
 	char	**tab;
-	void	*wall;
+	void	*bloc;
 	void	*exit;
 	void	*sol;
 	void	*col;
-}				t_map;
+	void	*m_b;
+	void	*m_b_g;
+	void	*m_b_d;
+	void	*m_g;
+	void	*m_d;
+	void	*m_h;
+	void	*m_h_g;
+	void	*m_h_d;
+	}				t_map;
 
 typedef struct s_so_long
 {

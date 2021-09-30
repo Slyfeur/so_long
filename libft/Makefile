@@ -6,7 +6,7 @@
 #    By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/08 09:45:55 by tuytters          #+#    #+#              #
-#    Updated: 2021/09/06 15:19:34 by tuytters         ###   ########.fr        #
+#    Updated: 2021/09/30 09:22:23 by tuytters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS	=	ft_atoi.c		\
 			ft_split.c		\
 			ft_strchr.c		\
 			ft_strdup.c		\
+			ft_strfilecmp.c	\
 			ft_strjoin.c	\
 			ft_strlcat.c	\
 			ft_strlcpy.c	\
