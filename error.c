@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 09:33:38 by tuytters          #+#    #+#             */
-/*   Updated: 2021/09/30 08:28:05 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/09/30 14:48:18 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	check_error_parsing(char *filename, t_so_long *global)
 	if (fd == -1)
 		ft_error("Open failed");
 	i = 0;
-	while (i < global->h_map)
+	while (i++ < global->h_map)
 	{
 		j = 0;
 		get_next_line(fd, &line);
@@ -68,10 +68,9 @@ void	check_error_parsing(char *filename, t_so_long *global)
 				ft_error("Bad map, error character");
 			j++;
 		}
-		if(j != global->w_map)
+		if (j != global->w_map)
 			ft_error("Bad map, not the same number of characters in the lines");
 		free(line);
-		i++;
 	}
 	if (close(fd) != 0)
 		ft_error("Close failed");

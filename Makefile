@@ -6,7 +6,7 @@
 #    By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/21 11:38:38 by tuytters          #+#    #+#              #
-#    Updated: 2021/09/29 10:53:24 by tuytters         ###   ########.fr        #
+#    Updated: 2021/09/30 15:16:01 by tuytters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,12 @@ CC			=	gcc
 INCLUDE 	=	includes
 CFLAGS		=	-Wall -Wextra -Werror -I$(INCLUDE) -fsanitize=address -g
 RM			=	rm -f
-SRCS		=	so_long.c	\
-				crea_img.c	\
-				error.c		\
-				parsing.c	\
-				pixel.c		\
+SRCS		=	so_long.c		\
+				error.c			\
+				height_width.c	\
+				open_img.c		\
+				parsing.c		\
+				pixel.c			\
 				press.c
 
 OBJS		=	$(SRCS:%.c=%.o)

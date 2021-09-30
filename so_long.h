@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 11:04:40 by tuytters          #+#    #+#             */
-/*   Updated: 2021/09/30 11:53:19 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/09/30 15:37:58 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ typedef struct s_so_long
 	int			h_map;
 	int			width;
 	int			w_map;
-	// int			x;
-	// int			y;
+	int			i;
+	//int			aff_mv;
 	t_pixel		*pixel;
 	t_map		*map;
 	t_pl		*pl;
@@ -91,5 +91,7 @@ void	open_img(t_so_long *global);
 void	check_error_map(t_so_long *global);
 void	check_error_parsing(char *filename, t_so_long *global);
 void	check_error_wall(t_so_long *global);
+int		get_height(char *filename, t_so_long *global);
+int		get_width(char *filename, t_so_long *global);
 
 #endif

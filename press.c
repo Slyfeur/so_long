@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:49:50 by tuytters          #+#    #+#             */
-/*   Updated: 2021/09/30 11:53:36 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/09/30 14:42:34 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	ft_keypress(int keycode, void *param)
 				ft_printf("You win in %d moves, congratulation!\n", global->count->move);
 				exit (-1);
 		}
+		global->i = 1;
 		ft_crea(global);
 	}
 	else if ((keycode == 124 || keycode == 2) && (global->pl->pos_x < global->width - 32)
@@ -60,6 +61,7 @@ int	ft_keypress(int keycode, void *param)
 				ft_printf("You win in %d moves, congratulation!\n", global->count->move);
 				exit (-1);
 		}
+		global->i = 2;
 		ft_crea(global);
 	}
 	else if ((keycode == 126 || keycode == 13) && (global->pl->pos_y > 31)
@@ -81,6 +83,7 @@ int	ft_keypress(int keycode, void *param)
 				ft_printf("You win in %d moves, congratulation!\n", global->count->move);
 				exit (-1);
 		}
+		global->i = 3;
 		ft_crea(global);
 	}
 	else if ((keycode == 123 || keycode == 0) && (global->pl->pos_x > 31)
@@ -102,6 +105,7 @@ int	ft_keypress(int keycode, void *param)
 				ft_printf("You win in %d moves, congratulation!\n", global->count->move);
 				exit (-1);
 		}
+		global->i = 4;
 		ft_crea(global);
 	}
 	return (0);
