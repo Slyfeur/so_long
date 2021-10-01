@@ -6,160 +6,90 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 12:21:33 by tuytters          #+#    #+#             */
-/*   Updated: 2021/09/30 15:40:36 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/10/01 16:10:55 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static t_so_long	*ft_init(t_so_long *global)
+static t_so_long	*ft_init(t_so_long *glo)
 {
-	global->mlx_ptr = mlx_init();
-	global->win_ptr = mlx_new_window(global->mlx_ptr,
-			global->width, global->height, "So_long");
-	global->image = mlx_new_image(global->mlx_ptr,
-			global->height, global->width);
-	global->pl->s_b = mlx_new_image(global->mlx_ptr,
+	glo->mlx = mlx_init();
+	glo->win = mlx_new_window(glo->mlx,
+			glo->width, glo->height, "So_long");
+	glo->image = mlx_new_image(glo->mlx,
+			glo->height, glo->width);
+	glo->pl->s_b = mlx_new_image(glo->mlx,
 			32, 32);
-	//global->aff_mv = mlx_string_put(global->mlx_ptr, global->win_ptr, 32, 32, 0x00FF0000, ft_itoa(global->count->move));
-	return (global);
+	glo->init = 1;
+	return (glo);
 }
 
-void	ft_init_nbr(t_so_long *global)
+void	ft_init_nbr(t_so_long *glo)
 {
-	global->count->p = 0;
-	global->count->e = 0;
-	global->count->c = 0;
-	global->count->move = 0;
-	global->i = 1;
+	glo->count->p = 0;
+	glo->count->e = 0;
+	glo->count->c = 0;
+	glo->count->move = 0;
+	glo->pl->di = 1;
 }
 
-static t_so_long	*ft_malloc_all(t_so_long *global)
+static t_so_long	*ft_malloc_all(t_so_long *glo)
 {
 	t_pixel		*pixel;
 	t_map		*map;
 	t_pl		*pl;
 	t_count		*count;
+	t_c			*c;
 
 	pixel = malloc(sizeof(t_pixel));
 	if (!pixel)
-		ft_error("Malloc failed");
+		ft_error(glo, "Malloc failed");
 	map = malloc(sizeof(t_map));
 	if (!map)
-		ft_error("Malloc failed");
+		ft_error(glo, "Malloc failed");
 	pl = malloc(sizeof(t_pl));
 	if (!pl)
-		ft_error("Malloc failed");
-	count = malloc(sizeof(t_pl));
+		ft_error(glo, "Malloc failed");
+	c = malloc(sizeof(t_c));
+	if (!c)
+		ft_error(glo, "Malloc failed");
+	count = malloc(sizeof(t_count));
 	if (!pl)
-		ft_error("Malloc failed");
-	global->pl = pl;
-	global->map = map;
-	global->pixel = pixel;
-	global->count = count;
-	ft_init_nbr(global);
-	return (global);
-}
-
-void	pr_img_to_wind(t_so_long *global)
-{
-	int	i;
-	int	j;
-	//int	x;
-
-	i = 0;
-	while (i < global->h_map)
-	{
-		j = 0;
-		while (j < global->w_map)
-		{
-			if (global->map->tab[i][j] == 'P')
-			{
-				mlx_put_image_to_window(global->mlx_ptr, global->win_ptr,
-					global->map->sol, global->pl->pos_x, global->pl->pos_y);
-				mlx_put_image_to_window(global->mlx_ptr, global->win_ptr,
-					global->pl->s_b, global->pl->pos_x, global->pl->pos_y);
-			}
-			else if (global->map->tab[i][j] == '0')
-				mlx_put_image_to_window(global->mlx_ptr, global->win_ptr,
-					global->map->sol, j * 32, i * 32);
-			else if (global->map->tab[i][j] == '1')
-			{
-				if (i == 0 && j == 0)
-					mlx_put_image_to_window(global->mlx_ptr, global->win_ptr,
-						global->map->m_h_g, j * 32, i * 32);
-				else if (i == 0 && j == (global->w_map - 1))
-					mlx_put_image_to_window(global->mlx_ptr, global->win_ptr,
-						global->map->m_h_d, j * 32, i * 32);
-				else if (i == 0 && j < global->w_map - 1)
-					mlx_put_image_to_window(global->mlx_ptr, global->win_ptr,
-						global->map->m_h, j * 32, i * 32);
-				else if (i == global->h_map - 1 && j == 0)
-					mlx_put_image_to_window(global->mlx_ptr, global->win_ptr,
-						global->map->m_b_g, j * 32, i * 32);
-				else if (i == global->h_map - 1 && j == global->w_map - 1)
-					mlx_put_image_to_window(global->mlx_ptr, global->win_ptr,
-						global->map->m_b_d, j * 32, i * 32);
-				else if (i > 0 && i < global->h_map - 1 && j == 0)
-					mlx_put_image_to_window(global->mlx_ptr, global->win_ptr,
-						global->map->m_g, j * 32, i * 32);
-				else if (i > 0 && i < global->h_map - 1 && j
-					== global->w_map - 1)
-					mlx_put_image_to_window(global->mlx_ptr, global->win_ptr,
-						global->map->m_d, j * 32, i * 32);
-				else if (i == global->h_map - 1 && j < global->w_map - 1)
-					mlx_put_image_to_window(global->mlx_ptr, global->win_ptr,
-						global->map->m_b, j * 32, i * 32);
-				else
-					mlx_put_image_to_window(global->mlx_ptr, global->win_ptr,
-						global->map->bloc, j * 32, i * 32);
-			}
-			else if (global->map->tab[i][j] == 'C')
-				mlx_put_image_to_window(global->mlx_ptr, global->win_ptr,
-					global->map->col, j * 32, i * 32);
-			else if (global->map->tab[i][j] == 'E')
-				mlx_put_image_to_window(global->mlx_ptr, global->win_ptr,
-					global->map->exit, j * 32, i * 32);
-			j++;
-		}
-		i++;
-	}
+		ft_error(glo, "Malloc failed");
+	glo->pl = pl;
+	glo->map = map;
+	glo->pixel = pixel;
+	glo->count = count;
+	glo->c = c;
+	ft_init_nbr(glo);
+	return (glo);
 }
 
 int	main(int argc, char **argv)
 {
-	t_so_long	*global;
+	t_so_long	*glo;
 
 	if (argc == 2 && ft_strfilecmp(argv[1], ".ber") == 0)
 	{
-		global = malloc(sizeof(t_so_long));
-		if (!global)
-			ft_error("Malloc failed");
-		ft_malloc_all(global);
-		parse(argv[1], global);
-		//printf("p = %d e = %d c = %d\n", global->count->p, global->count->e, global->count->c);
-		check_error_map(global);
-		global = ft_init(global);
-		mlx_hook(global->win_ptr, 2, 1L << 0, &ft_keypress, global);
-		mlx_hook(global->win_ptr, 17, 1L << 17, &ft_mousepress, global);
-		global->addr = mlx_get_data_addr(global->image, &global->bit_p_p,
-				&global->l_l, &global->endian);
-		ft_crea_pix(global);
-		open_img(global);
-		pr_img_to_wind(global);
-		//mlx_loop_hook(global->mlx, , void(*)&global);
-		mlx_loop(global->mlx_ptr);
-		if (global->pixel)
-			free(global->pixel);
-		if (global->map)
-			free(global->map);
-		if (global->pl)
-			free(global->pl);
-		if (global->count)
-			free(global->count);
-		if (global)
-			free(global);
+		glo = malloc(sizeof(t_so_long));
+		if (!glo)
+			ft_error(glo, "Malloc failed");
+		ft_malloc_all(glo);
+		parse(argv[1], glo);
+		check_error_map(glo);
+		glo = ft_init(glo);
+		mlx_hook(glo->win, 2, 1L << 0, &ft_keypress, glo);
+		mlx_hook(glo->win, 17, 1L << 17, &ft_mousepress, glo);
+		glo->addr = mlx_get_data_addr(glo->image, &glo->bit_p_p,
+				&glo->l_l, &glo->endian);
+		open_img(glo);
+		pr_img_to_wind(glo);
+		mlx_loop(glo->mlx);
 	}
 	else
-		ft_error("Wrong map name");
+	{
+		ft_printf("Wrong map name");
+		exit (-1);
+	}
 }
