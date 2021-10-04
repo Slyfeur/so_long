@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 10:44:28 by tuytters          #+#    #+#             */
-/*   Updated: 2021/10/01 15:59:33 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/10/04 12:34:32 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ static void	p_and_m_img(t_so_long *glo)
 	glo->map->m_h = mlx_xpm_file_to_image(glo->mlx, "xpm/m_h.XPM", &x, &y);
 	glo->map->m_h_g = mlx_xpm_file_to_image(glo->mlx, "xpm/m_h_g.XPM", &x, &y);
 	glo->map->m_h_d = mlx_xpm_file_to_image(glo->mlx, "xpm/m_h_d.XPM", &x, &y);
+	glo->o->o_b = mlx_xpm_file_to_image(glo->mlx, "xpm/e_b.XPM", &x, &y);
+	glo->o->o_h = mlx_xpm_file_to_image(glo->mlx, "xpm/e_h.XPM", &x, &y);
+	glo->o->o_g = mlx_xpm_file_to_image(glo->mlx, "xpm/e_g.XPM", &x, &y);
+	glo->o->o_d = mlx_xpm_file_to_image(glo->mlx, "xpm/e_d.XPM", &x, &y);
 }
 
 static void	c_img(t_so_long *glo)

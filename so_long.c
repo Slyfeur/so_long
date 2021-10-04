@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 12:21:33 by tuytters          #+#    #+#             */
-/*   Updated: 2021/10/01 16:10:55 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/10/04 12:34:03 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static t_so_long	*ft_init(t_so_long *glo)
 			glo->width, glo->height, "So_long");
 	glo->image = mlx_new_image(glo->mlx,
 			glo->height, glo->width);
-	glo->pl->s_b = mlx_new_image(glo->mlx,
-			32, 32);
 	glo->init = 1;
 	return (glo);
 }
@@ -41,6 +39,7 @@ static t_so_long	*ft_malloc_all(t_so_long *glo)
 	t_pl		*pl;
 	t_count		*count;
 	t_c			*c;
+	t_o			*o;
 
 	pixel = malloc(sizeof(t_pixel));
 	if (!pixel)
@@ -57,11 +56,15 @@ static t_so_long	*ft_malloc_all(t_so_long *glo)
 	count = malloc(sizeof(t_count));
 	if (!pl)
 		ft_error(glo, "Malloc failed");
+	o = malloc(sizeof(t_o));
+	if (!o)
+		ft_error(glo, "Malloc failed");
 	glo->pl = pl;
 	glo->map = map;
 	glo->pixel = pixel;
 	glo->count = count;
 	glo->c = c;
+	glo->o = o;
 	ft_init_nbr(glo);
 	return (glo);
 }

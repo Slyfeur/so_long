@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 15:23:07 by tuytters          #+#    #+#             */
-/*   Updated: 2021/10/01 15:49:23 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/10/04 08:47:16 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	ft_init_tab(t_so_long *glo)
 		}
 		i++;
 	}
+	glo->count->init_tab = 1;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 11:04:40 by tuytters          #+#    #+#             */
-/*   Updated: 2021/10/01 16:10:15 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/10/04 12:33:58 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct s_pixel
 {
-	int x;
+	int	x;
 }	t_pixel;
 
 typedef struct s_count
@@ -30,6 +30,7 @@ typedef struct s_count
 	int	e;
 	int	move;
 	int	img_to_wind;
+	int	init_tab;
 }	t_count;
 
 typedef struct s_pl
@@ -78,8 +79,16 @@ typedef struct s_c
 	void	*k14;
 	void	*k15;
 	void	*k16;
-	int		x;
+	int		nbr;
 }	t_c;
+
+typedef struct s_o
+{
+	void	*o_b;
+	void	*o_h;
+	void	*o_d;
+	void	*o_g;
+}	t_o;
 
 typedef struct s_so_long
 {
@@ -87,8 +96,8 @@ typedef struct s_so_long
 	void		*win;
 	void		*image;
 	char		*addr;
-	int			bit_p_p;
 	int			l_l;
+	int			bit_p_p;
 	int			endian;
 	int			height;
 	int			h_map;
@@ -100,6 +109,7 @@ typedef struct s_so_long
 	t_pl		*pl;
 	t_count		*count;
 	t_c			*c;
+	t_o			*o;
 }	t_so_long;
 
 void	ft_crea_pix(t_so_long *glo);
