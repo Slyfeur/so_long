@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 09:33:38 by tuytters          #+#    #+#             */
-/*   Updated: 2021/10/04 08:44:17 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/10/04 14:20:11 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	check_error_wall(t_so_long *glo)
 int	check_error_parsing1(char *line, int j, t_so_long *glo)
 {
 	if (line[j] != '0' && line[j] != '1' && line[j] != 'E'
-		&& line[j] != 'P' && line[j] != 'C')
+		&& line[j] != 'P' && line[j] != 'C' && line[j] != 'O')
 		ft_error(glo, "Bad map, error character");
 	j++;
 	return (j);
@@ -97,4 +97,6 @@ void	check_error_map(t_so_long *glo)
 		ft_error(glo, "Wrong number of exit");
 	else if (glo->count->c < 1)
 		ft_error(glo, "Wrong number of collectible");
+	else if (glo->count->o < 0 || glo->count->o > 1)
+		ft_error(glo, "Wrong number of opponent, please put only one on the map");
 }

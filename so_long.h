@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 11:04:40 by tuytters          #+#    #+#             */
-/*   Updated: 2021/10/04 12:33:58 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/10/04 13:05:57 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_count
 	int	p;
 	int	c;
 	int	e;
+	int	o;
 	int	move;
 	int	img_to_wind;
 	int	init_tab;
@@ -84,6 +85,8 @@ typedef struct s_c
 
 typedef struct s_o
 {
+	int		pos_x;
+	int		pos_y;
 	void	*o_b;
 	void	*o_h;
 	void	*o_d;
@@ -137,5 +140,6 @@ void	pr_move(t_so_long *glo);
 void	ft_free_all(t_so_long *glo);
 void	destroy_p_and_m_img(t_so_long *glo);
 void	destroy_c_img(t_so_long *glo);
+void	opponent_move(t_so_long *glo);
 
 #endif

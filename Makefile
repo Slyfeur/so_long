@@ -6,7 +6,7 @@
 #    By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/21 11:38:38 by tuytters          #+#    #+#              #
-#    Updated: 2021/10/01 14:13:36 by tuytters         ###   ########.fr        #
+#    Updated: 2021/10/04 13:06:22 by tuytters         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS		=	so_long.c		\
 				height_width.c	\
 				keypress.c		\
 				open_img.c		\
+				opponent.c		\
 				parsing.c		\
 				pixel.c			\
 				pr_img.c		\

@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 13:54:11 by tuytters          #+#    #+#             */
-/*   Updated: 2021/10/04 09:22:32 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/10/04 12:42:43 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	ft_free_all(t_so_long *glo)
 	if (glo->pixel)
 		free(glo->pixel);
 	//printf("test3\n");
+	if (glo->o)
+		free(glo->o);
 	if (glo->c)
 		free(glo->c);
 	//printf("test4\n");

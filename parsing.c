@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 15:23:07 by tuytters          #+#    #+#             */
-/*   Updated: 2021/10/04 08:47:16 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/10/04 12:37:59 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ int	crea_tab2(t_so_long *glo, int i, int j, char *line)
 		glo->count->e++;
 	if (line[j] == 'C')
 		glo->count->c++;
+	if (line[j] == 'O')
+	{
+		glo->o->pos_x = j * 32;
+		glo->o->pos_y = i * 32;
+		glo->count->o++;
+	}
 	j++;
 	return (j);
 }

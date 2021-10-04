@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 11:26:44 by tuytters          #+#    #+#             */
-/*   Updated: 2021/10/01 13:24:07 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/10/04 15:27:23 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,14 @@ void	m_bas(t_so_long *glo)
 		&& glo->count->c <= 0)
 		pr_mess(glo, 0);
 	glo->pl->di = 1;
+	if (glo->map->tab[(glo->pl->pos_y / 32 + 1)][glo->pl->pos_x / 32] == 'O'
+		|| glo->map->tab[(glo->pl->pos_y / 32)][glo->pl->pos_x / 32] == 'O')
+	{
+		printf("test\n");
+		pr_mess(glo, 1);
+	}
+	opponent_move(glo);
+	
 	ft_crea(glo);
 }
 
@@ -57,6 +65,14 @@ void	m_droite(t_so_long *glo)
 		&& glo->count->c <= 0)
 		pr_mess(glo, 0);
 	glo->pl->di = 2;
+	if (glo->map->tab[(glo->pl->pos_y / 32)][glo->pl->pos_x / 32 + 1] == 'O'
+		|| glo->map->tab[(glo->pl->pos_y / 32)][glo->pl->pos_x / 32] == 'O')
+	{
+		printf("test\n");
+		pr_mess(glo, 1);
+	}
+	opponent_move(glo);
+	
 	ft_crea(glo);
 }
 
@@ -81,6 +97,14 @@ void	m_haut(t_so_long *glo)
 		&& glo->count->c <= 0)
 		pr_mess(glo, 0);
 	glo->pl->di = 3;
+	if (glo->map->tab[(glo->pl->pos_y / 32) - 1][glo->pl->pos_x / 32] == 'O'
+		|| glo->map->tab[(glo->pl->pos_y / 32)][glo->pl->pos_x / 32] == 'O')
+	{
+		printf("test\n");
+		pr_mess(glo, 1);
+	}
+	opponent_move(glo);
+
 	ft_crea(glo);
 }
 
@@ -105,5 +129,13 @@ void	m_gauche(t_so_long *glo)
 		&& glo->count->c <= 0)
 		pr_mess(glo, 0);
 	glo->pl->di = 4;
+	if (glo->map->tab[(glo->pl->pos_y / 32)][glo->pl->pos_x / 32 - 1] == 'O'
+		|| glo->map->tab[(glo->pl->pos_y / 32)][glo->pl->pos_x / 32] == 'O')
+	{
+		printf("test\n");
+		pr_mess(glo, 1);
+	}
+	opponent_move(glo);
+	
 	ft_crea(glo);
 }

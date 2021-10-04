@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 10:44:28 by tuytters          #+#    #+#             */
-/*   Updated: 2021/10/04 12:34:32 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/10/04 14:23:35 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,10 @@ void	destroy_p_and_m_img(t_so_long *glo)
 	mlx_destroy_image(glo->mlx, glo->map->m_h);
 	mlx_destroy_image(glo->mlx, glo->map->m_h_g);
 	mlx_destroy_image(glo->mlx, glo->map->m_h_d);
+	mlx_destroy_image(glo->mlx, glo->o->o_b);
+	mlx_destroy_image(glo->mlx, glo->o->o_h);
+	mlx_destroy_image(glo->mlx, glo->o->o_g);
+	mlx_destroy_image(glo->mlx, glo->o->o_d);
 }
 
 void	destroy_c_img(t_so_long *glo)

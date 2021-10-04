@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 12:21:33 by tuytters          #+#    #+#             */
-/*   Updated: 2021/10/04 12:34:03 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/10/04 12:37:48 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_init_nbr(t_so_long *glo)
 	glo->count->p = 0;
 	glo->count->e = 0;
 	glo->count->c = 0;
+	glo->count->o = 0;
 	glo->count->move = 0;
 	glo->pl->di = 1;
 }

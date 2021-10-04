@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 10:50:58 by tuytters          #+#    #+#             */
-/*   Updated: 2021/10/04 08:58:59 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/10/04 12:46:16 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,12 @@ void	pr_c_to_im(t_so_long *glo, int i, int j)
 	glo->c->nbr++;
 }
 
+void	pr_o_to_im(t_so_long *glo, int i, int j)
+{
+	mlx_put_image_to_window(glo->mlx, glo->win, glo->map->sol, j * 32, i * 32);
+	mlx_put_image_to_window(glo->mlx, glo->win, glo->o->o_b, j * 32, i * 32);
+}
+
 void	pr_img_to_wind(t_so_long *glo)
 {
 	int	j;
@@ -101,6 +107,8 @@ void	pr_img_to_wind(t_so_long *glo)
 				pr_c_to_im(glo, glo->count->img_to_wind, j);
 			else if (glo->map->tab[glo->count->img_to_wind][j] == 'E')
 				pr_exit_to_im(glo, glo->count->img_to_wind, j);
+			else if (glo->map->tab[glo->count->img_to_wind][j] == 'O')
+				pr_o_to_im(glo, glo->count->img_to_wind, j);
 			j++;
 			if (glo->c->nbr == 17)
 				glo->c->nbr = 0;

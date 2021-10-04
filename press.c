@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:49:50 by tuytters          #+#    #+#             */
-/*   Updated: 2021/10/04 09:22:09 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/10/04 15:28:28 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,15 @@ int	ft_keypress(int keycode, void *param)
 		exit(0);
 	}
 	else if ((keycode == 125 || keycode == 1)
-		&& (glo->pl->pos_y < glo->height - 32)
 		&& glo->map->tab[(glo->pl->pos_y / 32) + 1][glo->pl->pos_x / 32] != '1')
 		m_bas(glo);
 	else if ((keycode == 124 || keycode == 2)
-		&& (glo->pl->pos_x < glo->width - 32)
 		&& glo->map->tab[glo->pl->pos_y / 32][(glo->pl->pos_x / 32) + 1] != '1')
 		m_droite(glo);
-	else if ((keycode == 126 || keycode == 13) && (glo->pl->pos_y > 31)
+	else if ((keycode == 126 || keycode == 13)
 		&& glo->map->tab[(glo->pl->pos_y / 32) - 1][glo->pl->pos_x / 32] != '1')
 		m_haut(glo);
-	else if ((keycode == 123 || keycode == 0) && (glo->pl->pos_x > 31)
+	else if ((keycode == 123 || keycode == 0)
 		&& glo->map->tab[glo->pl->pos_y / 32][(glo->pl->pos_x / 32) - 1] != '1')
 		m_gauche(glo);
 	return (0);

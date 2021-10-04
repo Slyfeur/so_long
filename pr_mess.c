@@ -6,7 +6,7 @@
 /*   By: tuytters <tuytters@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 12:18:24 by tuytters          #+#    #+#             */
-/*   Updated: 2021/10/01 16:07:34 by tuytters         ###   ########.fr       */
+/*   Updated: 2021/10/04 15:28:18 by tuytters         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@ void	pr_mess(t_so_long *glo, int i)
 	if (i == 0)
 	{
 		ft_printf("You win in %d moves, congratulation!\n", glo->count->move);
+		ft_free_all(glo);
+		//system("leaks so_long");
+		exit (0);
+	}
+	if (i == 1)
+	{
+		ft_printf("You are dead, try again!!!\n");
 		ft_free_all(glo);
 		//system("leaks so_long");
 		exit (0);
